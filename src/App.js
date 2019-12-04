@@ -3,12 +3,23 @@ import PostForm from './components/PostForm';
 import PostList from './components/PostList'
 import './App.css';
 
+const postList = [
+  {
+      post: 'hogehogehogehoge',
+      author: 'naoki'
+  },
+  {
+      post: 'fugafugafugafuga',
+      author: 'hogetarou'
+  },
+];
 
-function App() {
+const App = () => {
   return (
+
     <div className="App">
       <PostForm />
-      <PostList />
+      <PostList list={postList}/>
     </div>
   );
 }

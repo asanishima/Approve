@@ -1,37 +1,31 @@
-import React from 'react'
+import React, {useState }  from 'react'
 
-class PostForm extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {content: ''};
+const PostForm = props => {
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
-    }
+    const [content, setContent] = useState('');
     
-    handleChange(e) {
-        this.setState({content: e.target.value});
-    }
+    const handleChange = e => {
+        setContent(e.target.value);
+    };
 
-    handleSubmit(e) {
-        alert('The post is submitted :' + this.state.content);
-    }
-
-    render() {
-        return(
+    const handleSubmit = () => {
+        alert('The post is submitted :' + content);
+    };
+     
+    return(
+        <div className='post-container'>
             <div className='postform'>
-                <form onSubmit={this.handleSubmit}> 
+                 <form onSubmit={handleSubmit}> 
                     <textarea
                         placeholder='課題を書き込んでください！'
-                        value={this.state.content}
-                        onChange={this.handleChange}>
+                            value={content}
+                            onChange={handleChange}>
                     </textarea>
                     <button type='submit' name='submit'>投稿</button>
                 </form>
             </div>
-        )
-    }
+        </div>
+    );
 }
 
 export default PostForm;
